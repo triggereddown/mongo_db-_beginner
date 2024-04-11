@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 <body>
     <div class="main_card">
@@ -18,7 +19,70 @@
             <button id="button2">CHECK</button> <!-- Changed class to id for button2 -->
         </div>
     </div>
+    <div class="data_cards">
+        <div id="personData">
+        </div>
+        <div id="menuData">
+        </div>
+    </div>
+    
 
-    <script src="index.js"></script> <!-- Corrected script source -->
+    <script >
+    // <!-- DATA FOR PERSON -->
+    document.addEventListener("DOMContentLoaded", function() {
+        const button1 = document.getElementById("button1");
+        const personDataDiv = document.getElementById("personData");
+    
+        button1.addEventListener("click", () => {
+            fetch('/person')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+               
+                data.forEach(person => {
+                    personDataDiv.innerHTML += `
+                        <h2>Person Data</h2>
+                        <p>Name: ${person.name}</p>
+                        <p>Age: ${person.age}</p>
+                        <p>Work: ${person.work}</p>
+                    `;
+                });
+            })
+            .catch(error => console.error('Error fetching person data:', error));
+        });
+    });
+// DATA FOR MENU
+    document.addEventListener("DOMContentLoaded", function() {
+        const button1 = document.getElementById("button2");
+        const personDataDiv = document.getElementById("menuData");
+    
+        button1.addEventListener("click", () => {
+            fetch('/menu')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                
+                data.forEach(person => {
+                    personDataDiv.innerHTML += `
+                        <h2>Menu Items</h2>
+                        <p>Name: ${person.name}</p>
+                        <p>Price: ${person.price}</p>
+                        <p>Taste: ${person.taste}</p>
+                    `;
+                });
+            })
+            .catch(error => console.error('Error fetching person data:', error));
+        });
+    });
+    </script>
 </body>
 </html>
+
