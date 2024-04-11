@@ -1,14 +1,12 @@
 const button1 = document.getElementById("button1");
-const button2 = document.querySelector(".button2"); // Using querySelector to select the button by class
+const button2 = document.getElementById("button2");
 
 const goToPersonRoute = () => {
-    const link = "https://hotels-23w1.onrender.com/person"; 
-    window.location.href = link;
+    window.location.href = "/person"; // Navigate to the '/person' route
 }
 
 const goToMenuRoute = () => {
-    const link = "https://hotels-23w1.onrender.com/menu"; 
-    window.location.href = link;
+    window.location.href = "/menu"; // Navigate to the '/menu' route
 }
 
 button1.addEventListener("click", goToPersonRoute);
